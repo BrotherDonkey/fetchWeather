@@ -6,7 +6,7 @@ const getDate = require('./getDate');
 const printDate = require('./printDate');
 
 const getYourOwn = "ac0079cb7f71dd021e4657610298c4df";
-
+//please branch and get your own API from https://openweathermap.org/api
 
 const fetchWeather = function() {
   const argv = process.argv.slice(2).join("_").replace(' ', '_');
@@ -17,7 +17,10 @@ const fetchWeather = function() {
 
   else {
           const cityName = argv;
-          const url = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName},us&APPID=${getYourOwn}&mode=json&units=imperial`
+          const measurementSystem = "imperial";
+          //to change to metric, change "imperial" above to "metric";
+          const url = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName},us&APPID=${getYourOwn}&mode=json&units=${measurementSystem}`;
+
           const request = http.get(url, request => {
           let responseBody = '';
           request.on('data', chunk => {
